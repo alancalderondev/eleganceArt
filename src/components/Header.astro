@@ -5,18 +5,19 @@ import Navref from './navref.astro';
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <header class="flex flex-col items-center py-8 gap-4 bg-gradient-to-b from-brown via-beige to-cream text-black">
   <!-- Logo o imagen del artista -->
-  <div class="flex items-center gap-4 animate-fade-in-down">
-    <img src="./imagen.jpg" alt="Imagen representativa del artista" class="w-16 h-16 rounded-full shadow-lg border-2 border-sand" />
-    <div class="flex flex-col items-center">
-      <h1 class="text-xl font-playfair tracking-wide animate-text-fade-in">Elegance Art</h1>
-      <p class="text-sm font-cormorant tracking-wider animate-text-fade-in">By Gali Rios</p>
+  <div class="flex flex-col items-center gap-4 animate-fade-in-down md:flex-row md:gap-6">
+    <img src="./imagen.jpg" alt="Imagen representativa del artista" class="w-24 h-24 rounded-full shadow-lg border-2 border-sand md:w-16 md:h-16" />
+    <div class="flex flex-col items-center md:items-start">
+      <h1 class="text-2xl font-playfair tracking-wide animate-text-fade-in md:text-xl">Elegance Art</h1>
+      <p class="text-base font-cormorant tracking-wider animate-text-fade-in md:text-sm">By Gali Rios</p>
     </div>
   </div>
 
   <!-- Barra de navegación -->
-  <nav class="flex items-center gap-6 text-base">
+  <nav class="flex flex-col items-center gap-4 text-base mt-6 md:flex-row md:gap-6">
     <!-- Letra italic para el logo -->
     <Navref ref="/inicio" label="Ir al inicio">Inicio</Navref>
     <Navref ref="/nosotros" label="Sobre nosotros">Nosotros</Navref>
@@ -24,6 +25,5 @@ import Navref from './navref.astro';
     <Navref ref="/galeria" label="Nuestro Arte">Nuestro Arte</Navref>
     <Navref ref="/contacto" label="Contacto">Contacto</Navref>
     <Navref ref="/citas" label="Citas">Citas</Navref>
-    
   </nav>
 </header>
