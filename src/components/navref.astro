@@ -1,0 +1,6 @@
+---
+const { ref, label } = Astro.props;
+---
+<a href={ref} class="text-brown  hover:text-sand italic transition font-playfair duration-150 ease-in-out animate-text-slide-in" aria-label={label} >
+    <slot/>    
+</a>
