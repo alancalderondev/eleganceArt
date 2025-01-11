@@ -1,24 +1,51 @@
 ---
+// Importa el componente Navref
 import Navref from './navref.astro';
 ---
 
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 
 <header class="flex flex-col items-center py-8 gap-4 bg-gradient-to-b from-brown via-beige to-cream text-black">
+  <!-- Menú hamburguesa para dispositivos pequeños -->
+  <div class=" md:hidden">
+    <!-- Botón hamburguesa -->
+    <button id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" class="absolute top-4 left-4 p-2 z-50">
+      <!-- Icono de hamburguesa -->
+      <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" ></path>
+      </svg>
+    </button>    
+  </div>
+  <!-- Menú desplegable -->
+  <div id="mobile-menu" class="hidden absolute left-4 w-48 text-black flex flex-col items-start gap-2 text-sm py-2 px-4 z-40 mt-4">
+  <Navref ref="/inicio" label="Ir al inicio" class="hover:underline">Inicio</Navref>
+  <Navref ref="/nosotros" label="Sobre nosotros" class="hover:underline">Nosotros</Navref>
+  <Navref ref="/servicios" label="Servicios" class="hover:underline">Servicios</Navref>
+  <Navref ref="/galeria" label="Nuestro Arte" class="hover:underline">Nuestro Arte</Navref>
+  <Navref ref="/contacto" label="Contacto" class="hover:underline">Contacto</Navref>
+  <Navref ref="/citas" label="Citas" class="hover:underline">Citas</Navref>
+</div>
   <!-- Logo o imagen del artista -->
   <div class="flex flex-col items-center gap-4 animate-fade-in-down md:flex-row md:gap-6">
-    <img src="./imagen.jpg" alt="Imagen representativa del artista" class="w-24 h-24 rounded-full shadow-lg border-2 border-sand md:w-16 md:h-16" />
+    <img
+      src="./imagen.jpg"
+      alt="Imagen representativa del artista"
+      class="w-24 h-24 rounded-full shadow-lg border-2 border-sand md:w-16 md:h-16"
+    />
     <div class="flex flex-col items-center md:items-start">
-      <h1 class="text-2xl font-playfair tracking-wide animate-text-fade-in md:text-xl">Elegance Art</h1>
-      <p class="text-base font-cormorant tracking-wider animate-text-fade-in md:text-sm">By Gali Rios</p>
+      <h1 class="text-2xl font-playfair tracking-wide animate-text-fade-in md:text-xl">
+        Elegance Art
+      </h1>
+      <p class="text-base font-cormorant tracking-wider animate-text-fade-in md:text-sm">
+        By Gali Rios
+      </p>
     </div>
   </div>
 
-  <!-- Barra de navegación -->
-  <nav class="flex flex-col items-center gap-4 text-base mt-6 md:flex-row md:gap-6">
-    <!-- Letra italic para el logo -->
+  <!-- Barra de navegación para dispositivos grandes -->
+  <nav class="hidden md:flex flex-row items-center gap-6 text-base mt-6">
     <Navref ref="/inicio" label="Ir al inicio">Inicio</Navref>
     <Navref ref="/nosotros" label="Sobre nosotros">Nosotros</Navref>
     <Navref ref="/servicios" label="Servicios">Servicios</Navref>
@@ -26,4 +53,23 @@ import Navref from './navref.astro';
     <Navref ref="/contacto" label="Contacto">Contacto</Navref>
     <Navref ref="/citas" label="Citas">Citas</Navref>
   </nav>
+
+  
 </header>
+
+<!-- Script para el menú hamburguesa -->
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (hamburgerBtn && mobileMenu) {
+      hamburgerBtn.addEventListener("click", () => {
+        const isExpanded = hamburgerBtn.getAttribute("aria-expanded") === "true";
+        hamburgerBtn.setAttribute("aria-expanded", !isExpanded);
+
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+  });
+</script>
